@@ -1,0 +1,36 @@
+Name: "pdf"
+Mode: "debug"
+Port: 8082
+Version: "1.0.0"
+ImagePrefixUrl: "http://127.0.0.1:9001"
+ImageSavePath: "upload/images/"
+ImageMaxSize: 5
+ImageAllowExt: ".jpg,.jpeg,.png"
+
+log:
+  Level: "debug"
+  Filename: "runtime.log"
+  MaxSize: 200
+  MaxAge: 30
+  MaxBackups: 7
+
+mysql:
+  Type: "mysql"
+  User: "root"
+  Password: "As78734398"
+  Host: "127.0.0.1"
+  Port: 3306
+  DB: "pdf"
+  TablePrefix: "pdf_"
+  MaxOpenConns: 200
+  MaxIdleConns: 20
+
+redis:
+  Host: "127.0.0.1"
+  Port: 6379
+  Password: ""
+  DB: 0
+  PoolSize: 200
+  MaxOpenConns: 200
+  MaxIdleConns: 20
+  Timeout: 5
