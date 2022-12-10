@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 
+	"github.com/15972158793/gin-app/controller"
+
 	"github.com/15972158793/gin-app/dao/mysql"
 	"github.com/15972158793/gin-app/dao/redis"
 	"github.com/15972158793/gin-app/pkg"
@@ -28,6 +30,9 @@ func setUp() {
 		fmt.Println("redis.SetUp() failed ...")
 		return
 	}
+
+	// 定义错误翻译器
+	controller.InitTranslator("zh")
 
 	router.SetUp()
 }

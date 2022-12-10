@@ -18,7 +18,7 @@ func SetUp() {
 	gin.SetMode(setting.AppConfig.Mode)
 
 	r := gin.New()
-	r.Use(middleware.Logger(), middleware.Recovery(true))
+	r.Use(middleware.Logger(), middleware.Recovery(false))
 
 	// 编写自动生成API文档
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
