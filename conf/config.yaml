@@ -1,6 +1,6 @@
 Name: "pdf"
 Mode: "debug"
-Port: 8082
+Port: 8081
 Version: "1.0.0"
 ImagePrefixUrl: "http://127.0.0.1:9001"
 ImageSavePath: "upload/images/"

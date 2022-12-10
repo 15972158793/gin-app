@@ -8,13 +8,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// UserSignUp
 // @Summary 用户注册
-// @Tags tag
+// @Tags user
 // @Description User sign up
 // @Produce json
 // @Param name formData string true "Name"
-// @Param orignal_password formData string "OrignalPassword"
-// @Param confirm_password formData string "ConfirmPassword"
+// @Param original_password formData string true "OriginalPassword"
+// @Param confirm_password formData string true "ConfirmPassword"
 // @Router /api/v1/user/sign_up [post]
 func UserSignUp(c *gin.Context) {
 

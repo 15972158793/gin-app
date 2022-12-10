@@ -4,13 +4,11 @@ import (
 	"fmt"
 
 	"github.com/15972158793/gin-app/controller"
-	_ "github.com/15972158793/gin-app/controller"
-
 	"github.com/15972158793/gin-app/middleware"
 	"github.com/15972158793/gin-app/setting"
-
 	"github.com/gin-gonic/gin"
 
+	_ "github.com/15972158793/gin-app/docs" //注意导入
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
