@@ -16,7 +16,7 @@ func SetUp() {
 		return
 	}
 
-	if err := snow.SetUp("2023-01-01", 1); err != nil {
+	if err := snow.SetUp("2022-12-10", 1); err != nil {
 		zap.L().Error("snow.SetUp failed ...")
 	}
 

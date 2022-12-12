@@ -21,10 +21,11 @@ var trans ut.Translator
 
 // InitTranslator 初始化翻译器
 func InitTranslator(locale string) (err error) {
+
 	//修改gin框架中的Validator属性，实现自定制
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 
-		// 注册一个获取json tag的自定义方法 实现结构体字段和前端字段同步
+		// 注册一个获取json tag的自定义方法
 		v.RegisterTagNameFunc(func(fld reflect.StructField) string {
 			name := strings.SplitN(fld.Tag.Get("json"), ",", 2)[0]
 			if name == "-" {
@@ -107,28 +108,29 @@ func addValueToMap(fields map[string]string) map[string]interface{} {
 }
 
 // 去掉结构体名称前缀
-func removeTopStruct(fields map[string]string) map[string]interface{} {
-	lowerMap := map[string]string{}
+func removeTopStruct(fields map[string]string) map[string]string {
+	res := map[string]string{}
 	for field, err := range fields {
-		fieldArr := strings.SplitN(field, ".", 2)
-		lowerMap[fieldArr[1]] = err
+		res[field[strings.Index(field, ".")+1:]] = err
 	}
-	res := addValueToMap(lowerMap)
 	return res
 }
 
 // ErrorResponse handler中调用的错误翻译方法
 func ErrorResponse(err error) *gin.H {
-	errs, ok := err.(validator.ValidationErrors)
-	// fmt.Println(reflect.TypeOf(err))
+
+	// errs, ok := err.(validator.ValidationErrors)
+	_, ok := err.(validator.ValidationErrors)
 	if !ok {
 		return &gin.H{
-			"errCode": -1,
-			"errMsg":  err.Error(), // 翻译校验错误提示
+			"code": -1,
+			"msg":  err.Error(), // 翻译校验错误提示
 		}
 	}
+	//var err1 = removeTopStruct(errs.Translate(trans))
+	//fmt.Println(err1)
 	return &gin.H{
-		"errCode": -1,
-		"errMsg":  removeTopStruct(errs.Translate(trans)), // 翻译校验错误提示
+		"code": -1,
+		"msg":  "参数错误", // 翻译校验错误提示
 	}
 }
