@@ -46,4 +46,24 @@ func UserSignUp(c *gin.Context) {
 
 func UserLogin(c *gin.Context) {
 
+	//参数校验
+	params := new(models.ParamsUserLogin)
+	if err := c.ShouldBindJSON(params); err != nil {
+		zap.L().Error("ParamsUserLogin invalid failed ... \n")
+		c.JSON(http.StatusOK, ErrorResponse(err))
+		return
+	}
+
+	if err := service.UserLogin(params); err != nil {
+		c.JSON(http.StatusOK, gin.H{
+			"msg": err.Error(),
+		})
+		return
+	}
+
+	//返回响应
+	c.JSON(http.StatusOK, gin.H{
+		"msg": "成功登录",
+	})
+
 }

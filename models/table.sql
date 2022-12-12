@@ -4,7 +4,7 @@ drop table `user`;
 create table `user`(
   `id` bigint(20) not null auto_increment primary key,
   `user_id` bigint(20) not null,
-  `name` varchar(64) collate utf8_general_ci not null,
+  `user_name` varchar(64) collate utf8_general_ci not null,
   `avatar` varchar(400),
   `sex` int default 0,
   `birthday` varchar(16),
@@ -28,5 +28,3 @@ create table `user`(
   `diamond` bigint(12),
   `coin` bigint(12)
 )engine = InnoDB default charset = utf8mb4 collate = utf8mb4_general_ci;
-
-#

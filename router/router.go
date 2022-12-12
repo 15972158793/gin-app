@@ -29,6 +29,7 @@ func SetUp() {
 	apiV1.Use()
 	{
 		apiV1.POST("/user/sign_up", controller.UserSignUp)
+		apiV1.POST("/user/login", controller.UserLogin)
 
 		//apiV1.GET("/tags", v1.GetTags)
 		//apiV1.POST("/tags", v1.AddTag)
