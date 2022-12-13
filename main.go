@@ -25,16 +25,19 @@ func setUp() {
 		fmt.Println("mysql.SetUp() failed ...")
 		return
 	}
+	defer mysql.Close()
 
 	if err := redis.SetUp(); err != nil {
 		fmt.Println("redis.SetUp() failed ...")
 		return
 	}
+	defer redis.Close()
 
 	// 定义错误翻译器
 	controller.InitTranslator("zh")
 
 	router.SetUp()
+
 }
 
 func main() {

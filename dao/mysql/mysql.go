@@ -40,5 +40,5 @@ func SetUp() (err error) {
 }
 
 func Close() {
-	defer db.Close()
+	db.Close()
 }

@@ -33,6 +33,10 @@ func SetUp() (err error) {
 	return err
 }
 
+func Close() {
+	rdb.Close()
+}
+
 func Set(key string, data interface{}, time0 time.Duration) error {
 	return rdb.Set(ctx, key, data, time0).Err()
 }

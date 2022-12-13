@@ -26,7 +26,6 @@ func UserSignUp(c *gin.Context) {
 	params := new(models.ParamsUserSignUp)
 	if err := c.ShouldBindJSON(params); err != nil {
 		zap.L().Error("ParamsUserSignUp invalid failed ... \n")
-		// c.JSON(http.StatusOK, ErrorResponse(err))
 		ResponseError(c, CODE_INVALID_PARAMS)
 		return
 	}
@@ -49,12 +48,19 @@ func UserLogin(c *gin.Context) {
 		return
 	}
 
-	if err := service.UserLogin(params); err != nil {
+	// 处理业务
+	result, err := service.UserLogin(params)
+	if err != nil {
 		ResponseError(c, CODE_NORMAL_SQL_ERROR)
 		return
 	}
 
 	//返回响应
-	ResponseSuccess(c, "登录成功")
+	ResponseSuccess(c, result)
+}
 
+// UserInfo 根据token获取用户信息
+func UserInfo(c *gin.Context) {
+
+	ResponseSuccess(c, "获取成功")
 }

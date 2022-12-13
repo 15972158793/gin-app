@@ -5,8 +5,8 @@ var msgFlags = map[int]string{
 	CODE_ERROR:            "请求失败",
 	CODE_INVALID_PARAMS:   "请求参数错误",
 	CODE_NORMAL_SQL_ERROR: "数据库操作失败",
+	CODE_INVALID_TOKEN:    "Token错误",
 
-	ERROR_EXIST_TAG_FAIL:            "获取已存在标签失败",
 	ERROR_NOT_EXIST_TAG:             "该标签不存在",
 	ERROR_GET_TAGS_FAIL:             "获取所有标签失败",
 	ERROR_COUNT_TAG_FAIL:            "统计标签失败",
