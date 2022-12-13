@@ -36,6 +36,7 @@ func UserLogin(user *models.User) (err error) {
 		return errors.New("密码错误")
 	}
 	return
+
 }
 
 // InsertUser 插入数据

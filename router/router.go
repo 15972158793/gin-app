@@ -18,6 +18,15 @@ func SetUp() {
 	gin.SetMode(setting.AppConfig.Mode)
 
 	r := gin.New()
+	// 设置受信任的代理
+	r.SetTrustedProxies([]string{"127.0.0.1"})
+	// 设置url中的大写自动转小写，..和//自动移除，
+	r.RedirectFixedPath = true
+	// 开启请求方法不允许，并且返回状态码405
+	r.HandleMethodNotAllowed = true
+	// 设置允许从远程客户端的哪个header头中获取ip（需搭配设置受信任的代理一起使用）
+	r.RemoteIPHeaders = append(r.RemoteIPHeaders, "Client-IP")
+
 	r.Use(middleware.Logger(), middleware.Recovery(false))
 
 	// 编写自动生成API文档
