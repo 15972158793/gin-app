@@ -10,6 +10,7 @@ import (
 type App struct {
 	Name    string `mapstructure:"Name"`
 	Mode    string `mapstructure:"Mode"`
+	Host    string `mapstructure:"Host"`
 	Port    int    `mapstructure:"Port"`
 	Version string `mapstructure:"Version"`
 
@@ -64,6 +65,8 @@ func SetUp() (err error) {
 
 	viper.AddConfigPath(".")
 	viper.AddConfigPath("./conf")
+	// 仅单元测试有效
+	viper.AddConfigPath("/Users/mac/Desktop/Develop/go/gin-app/conf")
 
 	err = viper.ReadInConfig()
 	if err != nil {

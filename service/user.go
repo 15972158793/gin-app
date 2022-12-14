@@ -23,14 +23,17 @@ func UserSignUp(param *models.ParamsUserSignUp) error {
 }
 
 func UserLogin(param *models.ParamsUserLogin) (interface{}, error) {
+
 	user := &models.User{
 		UserID:   0,
 		UserName: param.UserName,
 		Password: param.Password,
 	}
+
 	if err := mysql.UserLogin(user); err != nil {
 		return nil, err
 	}
+
 	// 登录成功后更新了user
 	// 生成token
 	token, err := jwt.GenerateToken(user.UserID, user.UserName)

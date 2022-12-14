@@ -25,6 +25,7 @@ func UserLogin(user *models.User) (err error) {
 	oldPassword := utils.MD5(user.Password)
 
 	sqlStr := `select user_id,user_name,password from user where user_name = ?`
+
 	err = db.Get(user, sqlStr, user.UserName)
 	if err == sql.ErrNoRows {
 		return errors.New("用户不存在")

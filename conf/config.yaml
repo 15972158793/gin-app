@@ -1,5 +1,6 @@
 Name: "pdf"
 Mode: "debug"
+Host: "127.0.0.1"
 Port: 8081
 Version: "1.0.0"
 ImagePrefixUrl: "http://127.0.0.1:9001"

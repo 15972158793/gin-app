@@ -9,9 +9,9 @@ type ParamsUserSignUp struct {
 }
 
 type User struct {
-	UserID   int64  `db:"user_id"`
-	UserName string `db:"user_name"`
-	Password string `db:"password"`
+	UserID   int64  `json:"user_id" db:"user_id"`
+	UserName string `json:"user_name" db:"user_name"`
+	Password string `json:"password" db:"password"`
 }
 
 type ParamsUserLogin struct {
