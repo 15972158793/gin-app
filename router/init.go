@@ -33,7 +33,7 @@ func SetUp() {
 	engine.RemoteIPHeaders = append(engine.RemoteIPHeaders, "Client-IP")
 
 	// 使用中间件
-	engine.Use(middleware.Logger(), middleware.Recovery(false))
+	engine.Use(middleware.Logger(), middleware.Recovery(false), middleware.RateLimit(1*time.Second, 10))
 
 	// 注册路由
 	initRoute()

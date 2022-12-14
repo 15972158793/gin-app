@@ -18,7 +18,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func initConfig() {
+func _initConfig() {
 	if err := setting.SetUp(); err != nil {
 		fmt.Println("setting.SetUp() failed ...")
 		return
@@ -42,7 +42,7 @@ func initConfig() {
 func TestUserLogin(t *testing.T) {
 
 	// 涉及到各种库的
-	initConfig()
+	_initConfig()
 
 	gin.SetMode(gin.TestMode)
 	url := "/api/v1/user/login"
